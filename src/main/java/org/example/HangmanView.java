@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
+import static javafx.geometry.Pos.BOTTOM_CENTER;
+import static javafx.geometry.Pos.CENTER;
+
 public class HangmanView {
     private Label wordLabel;
     private Label attemptsLabel;
@@ -31,9 +34,10 @@ public class HangmanView {
         guessButton = new Button("Adivinar");
         canvas = new Canvas(200, 200);
 
-        HBox canvasAndBoard = new HBox(10, canvas, createBoard());
-        VBox layout = new VBox(10, canvasAndBoard, wordLabel, attemptsLabel, inputField, guessButton);
-        Scene scene = new Scene(layout, 400, 350);
+        HBox canvasAndBoard = new HBox(10, canvas);
+        VBox info= new VBox(10, createBoard(), wordLabel, attemptsLabel, incorrectGuessesLabel, inputField, guessButton);
+        HBox layout = new HBox(10, canvasAndBoard, info);
+        Scene scene = new Scene(layout, 400, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -47,7 +51,7 @@ public class HangmanView {
     }
 
     public void setIncorrectGuesses(List<Character> incorrectGuesses) {
-        incorrectGuessesLabel.setText("Letras incorrectas: " + getIncorrectGuessesDisplay(incorrectGuesses));
+        incorrectGuessesLabel.setText("Letras incorrectas: \n" + getIncorrectGuessesDisplay(incorrectGuesses));
     }
 
     private String getIncorrectGuessesDisplay(List<Character> incorrectGuesses) {
