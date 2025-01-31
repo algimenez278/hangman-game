@@ -12,8 +12,6 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
-import static javafx.geometry.Pos.BOTTOM_CENTER;
-import static javafx.geometry.Pos.CENTER;
 
 public class HangmanView {
     private Label wordLabel;
@@ -22,6 +20,7 @@ public class HangmanView {
     private TextField inputField;
     private Button guessButton;
     private Canvas canvas;
+    private Button resetButton;
 
     public HangmanView(Stage primaryStage) {
         primaryStage.setTitle("Juego del Ahorcado");
@@ -32,12 +31,13 @@ public class HangmanView {
         inputField = new TextField();
         inputField.setPromptText("Introduce una letra");
         guessButton = new Button("Adivinar");
+        resetButton = new Button("Resetear");
         canvas = new Canvas(200, 200);
 
         HBox canvasAndBoard = new HBox(10, canvas);
-        VBox info= new VBox(10, createBoard(), wordLabel, attemptsLabel, incorrectGuessesLabel, inputField, guessButton);
+        VBox info= new VBox(10, createBoard(), wordLabel, attemptsLabel, incorrectGuessesLabel, inputField, guessButton, resetButton);
         HBox layout = new HBox(10, canvasAndBoard, info);
-        Scene scene = new Scene(layout, 400, 200);
+        Scene scene = new Scene(layout, 400, 230);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -92,6 +92,10 @@ public class HangmanView {
 
     public void setGuessButtonAction(Runnable action) {
         guessButton.setOnAction(e -> action.run());
+    }
+
+    public void setResetButtonAction(Runnable action) {
+        resetButton.setOnAction(e -> action.run());
     }
 
     public void showGameOver(String message) {

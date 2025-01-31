@@ -16,11 +16,22 @@ public class HangmanController extends Application {
         model = new HangmanModel();
         view = new HangmanView(primaryStage);
 
+        updateView();
+
+        view.setGuessButtonAction(this::handleGuess);
+       view.setResetButtonAction(this::resetGame);
+        view.drawHangman(model.getAttemptsLeft());
+    }
+
+    private void updateView() {
         view.setWordDisplay(model.getWordDisplay());
         view.setAttemptsLeft(model.getAttemptsLeft());
         view.setIncorrectGuesses(model.getIncorrectGuesses());
+    }
 
-        view.setGuessButtonAction(this::handleGuess);
+    private void resetGame() {
+        model.reset();
+        updateView();
         view.drawHangman(model.getAttemptsLeft());
     }
 

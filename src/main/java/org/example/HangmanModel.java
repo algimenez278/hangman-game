@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class HangmanModel {
-    private String[] words = {"java", "programacion", "ahorcado", "desarrollo", "software"};
+    private String[] words = {"java", "programacion", "ahorcado", "payaso", "andamio", "desarrollo", "software"};
     private String selectedWord;
     private List<Character> guessedLetters = new ArrayList<>();
     private List<Character> incorrectGuesses = new ArrayList<>();
@@ -56,5 +56,12 @@ public class HangmanModel {
 
     public String getSelectedWord() {
         return selectedWord;
+    }
+
+    public void reset() {
+        selectedWord = selectRandomWord();
+        guessedLetters.clear();
+        incorrectGuesses.clear();
+        attemptsLeft = 6;
     }
 }
