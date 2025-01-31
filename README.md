@@ -3,7 +3,6 @@
 - Este es un proyecto de un juego del ahorcado desarrollado en Java utilizando JavaFX.
 - Desarrollado con el diseño MVC.
 - Aplicacion de escritorio en continua mejora, tus ideas son bienvenidas.
-- markdown
 
 El objetivo del juego es adivinar una palabra secreta letra por letra antes de que se agoten los intentos.
 
