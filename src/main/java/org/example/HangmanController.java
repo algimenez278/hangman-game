@@ -19,7 +19,7 @@ public class HangmanController extends Application {
         updateView();
 
         view.setGuessButtonAction(this::handleGuess);
-       view.setResetButtonAction(this::resetGame);
+        view.setResetButtonAction(this::resetGame);
         view.drawHangman(model.getAttemptsLeft());
     }
 
